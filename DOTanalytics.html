@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.9.7, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.9.7, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+  <meta name="description" content="">
+
+  <title>DOT Analytics</title>
+  <link rel="stylesheet" href="assets/icon54-v3/style.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/as-pie-progress/css/progress.min.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+  </script>
+<script>
+  // Initialize Firebase
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyArnnGDC60fl7cyrrABHcCCVN41PXNs0lw",
+    authDomain: "fintech-e3c7b.firebaseapp.com",
+    databaseURL: "https://fintech-e3c7b.firebaseio.com",
+    projectId: "fintech-e3c7b",
+    storageBucket: "fintech-e3c7b.appspot.com",
+    messagingSenderId: "839016601322"
+  };
+
+  firebase.initializeApp(config);
+
+  var office_supervisor
+  var total_budget
+  var revenue_per_service
+  var accountants
+  var estimated_service
+  var admin_assistants
+  var rent
+  var furniture
+  var electricity
+  var total_tax
+  var predictedB
+
+
+getDatafromDB()
+
+function getDatafromDB(){
+
+
+  return firebase.database().ref('budget/' + 1).once('value').then(function(snapshot) {
+  var total_budget = (snapshot.val() && snapshot.val().total_budget)
+  var office_supervisor = (snapshot.val() && snapshot.val().supervisor_office)
+  var revenue_per_service = (snapshot.val() && snapshot.val().revenue_service)
+  var accountants = (snapshot.val() && snapshot.val().accountant)
+  var estimated_service = (snapshot.val() && snapshot.val().estimated)
+  var admin_assistants = (snapshot.val() && snapshot.val().admin_assist)
+  var rent = (snapshot.val() && snapshot.val().rentservice)
+  var furniture  = (snapshot.val() && snapshot.val().furniturecp)
+  var electricity = (snapshot.val() && snapshot.val().electricityw)
+  var total_tax = (snapshot.val() && snapshot.val().tax)
+  console.log(total_budget)
+  console.log(total_tax)
+  console.log(office_supervisor)
+  // ...
+
+  document.getElementById('tb').innerHTML = "Total Budget: " + total_budget
+  document.getElementById('rps').innerHTML = "Revenue Per Service: " + revenue_per_service
+  document.getElementById('tes').innerHTML = "Total Estimated Sales: " + estimated_service
+  document.getElementById('os').innerHTML = "Office Supervisors: " + office_supervisor
+  document.getElementById('tax').innerHTML = "Total Tax: " + total_tax
+  document.getElementById('impact').innerHTML = "Impact: " + "LOW"
+  document.getElementById('fixtures').innerHTML = "Furniture and Fixtures: " + furniture
+  document.getElementById('elec').innerHTML = "Electricity: " + electricity
+  document.getElementById('rent').innerHTML = "Rent: " + rent
+  document.getElementById('acc').innerHTML = "Accountants: " + accountants
+  document.getElementById('aa').innerHTML = "Admin Assistants: " + admin_assistants
+
+
+
+
+});
+}
+
+window.onload = function(){
+
+  var ctx = document.getElementById('myChart')
+  var scatterChart = new Chart(ctx, {
+      type: 'bubble',
+      data: {
+          datasets: [{
+              label: 'Previous Budget Prepositions for the past 20 Years',
+              data: [{
+x: 30000000,
+y: 0,
+r: 5
+}, {
+x: 32000000,
+y: 1,
+r: 8
+}, {
+x: 36000000,
+y: 2,
+r: 3
+}, {
+x: 37000000,
+y: 0,
+r:2
+}, {
+x: 39000000,
+y: 1,
+r:6
+}, {
+x: 41000000,
+y: 2,
+r:5
+}, {
+x: 42000000,
+y: 0,
+r: 2
+}, {
+x: 44000000,
+y: 1,
+r:9
+}, {
+x: 44500000,
+y: 2,
+r: 6
+}, {
+
+x: 46000000,
+y: 0,
+r: 5
+}, {
+x: 47000000,
+y: 1,
+r:7
+}, {
+x: 48000000,
+y: 2,
+r: 9
+}, {
+x: 48500000,
+y: 0,
+r: 6
+}, {
+x: 49000000,
+y: 1,
+r:3
+}, {
+x: 50000000,
+y: 2,
+r: 8
+}, {
+x: 51000000,
+y: 0,
+r:9
+}, {
+x: 60000000,
+y: 1,
+r:10
+}, {
+x: 55000000,
+y: 2,
+r:9
+}, {
+x: 55500000,
+y: 0,
+r:7
+}, {
+x: 56000000,
+y:1,
+r:6
+}]
+
+,backgroundColor: [
+                'rgba(255, 99, 132, 0.9s)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)',
+                'rgba(255, 99, 132, 0.9s)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)',
+                'rgba(255, 159, 64, 0.9)',
+                'rgba(255, 99, 132, 0.9s)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+
+            }]
+      },
+      options: {
+          scales: {
+              xAxes: [{
+                  type: 'linear',
+                  position: 'bottom'
+              }]
+          }
+      }
+  })
+
+}
+
+
+</script>
+
+  <body>
+  <section class="menu cid-roK4NGdUo1" once="menu" id="menu04-g">
+
+
+
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="navbar-brand">
+
+
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item dropdown"><a class="nav-link link text-info display-4" href="page2.html" aria-expanded="true">
+                        Log Out</a>
+
+                </li></ul>
+            <div class="navbar-buttons px-2 mbr-section-btn"><a class="btn btn-sm btn-success display-4" href="DOFDash.html">
+                    Dash Board</a></div>
+
+            <div class="icons-menu">
+                <a href="https://mobirise.com" target="_blank">
+                    <span class="p-2 mbr-iconfont mbri-search" style="color: rgb(87, 70, 139); fill: rgb(87, 70, 139);"></span>
+                </a>
+
+
+
+
+
+            </div>
+
+        </div>
+    </nav>
+</section>
+
+<section class="progress-bars1 cid-roOI6bT1B2" id="features016-i">
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-lg-6 col-md-12 img-col align-center">
+                <img src="assets/images/dof-logo-226x80.png" alt="Mobirise" title="">
+
+            </div>
+
+
+
+            <div class="col-lg-6 box col-md-12">
+
+                <div class="mbr-m-auto py-5">
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cid-roOIHcryVP" id="header08-l">
+
+
+
+
+
+    <div class="container align-center">
+        <div class="row justify-content-md-start justify-content-md-center">
+            <div class="mbr-white col-sm-212 col-md-10 col-lg-7">
+                <h1 class="mbr-section-title mbr-regular pb-3 align-center mbr-fonts-style display-2">Depratment Of Transport Budget Proposal</h1>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="features1 cid-roONy1pa7T" id="features03-o">
+
+
+
+
+    <div class="container">
+        <div class="media-container-row">
+
+            <div class="card p-3 col-12 col-md-8">
+                <div class="card-img pt-1">
+                    <span class="mbr-iconfont img1 icon54-v3-note-book-4"></span>
+                </div>
+                <div class="card-box">
+                    <h4 class="card-title py-2 align-left mbr-fonts-style display-5">
+                        Budget Proposal</h4>
+                    <p class="mbr-text mbr-fonts-style align-left display-4"></p>
+                    <p><span style="font-size: 1rem; background-color: transparent;"><br><strong><div id="tb">Total Budget:&nbsp;</strong></div></span><br></p>
+                    <br><div id="rps">Revenue Per Service:&nbsp;</div>
+                    <br><strong><div id="tes">Total Estimated Sales:</strong></div>
+                    <br><div id="os">Office Supervisors:&nbsp;</div>
+                    <br><div id="aa">Admin Assistants:</div>
+                    <br><div id = "acc">Accountants: &nbsp;</div>
+                    <br><div id="rent">Rent:</div>
+                    <br><div id="elec">Electricity:&nbsp;</div>
+                    <br><div id="fixtures">Furniture And Fixtures:&nbsp;</div>
+                    <br><div id="impact">Impact:&nbsp;</div>
+                    <div id="tax"><strong>Tax:&nbsp;</strong></div></p><p></p>
+                </div>
+            </div>
+
+            <div class="card p-3 col-12 col-md-8">
+                <div class="card-img pt-1">
+                    <span class="mbr-iconfont img2 mbri-setting"></span>
+                </div>
+                <div class="card-box">
+                    <h4 class="card-title py-2 align-left mbr-fonts-style display-5">Analytics</h4>
+                    <br>
+                    <h1>Predicted Budget: 40,000,000</h1><br>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <p class="mbr-text mbr-fonts-style align-left display-4">&nbsp;</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cid-roOZ1J8WDV" id="title01-q">
+
+
+
+
+
+    <div class="container align-center">
+        <div class="row justify-content-md-start">
+            <div class="mbr-white col-sm-12 col-md-10 col-lg-7">
+                <h1 class="mbr-section-title mbr-regular align-left mbr-fonts-style display-1">Policy Adherance</h1>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="progress-bars3 cid-roOYfjJMfs" id="progress-bars03-p">
+
+
+
+
+
+    <div class="container">
+
+
+
+
+        <div class="media-container-row">
+            <div class="card p-3 align-center">
+                <div class="wrap">
+                    <div class="pie_progress progress1" role="progressbar" data-goal="100">
+                        <p class="pie_progress__number number mbr-fonts-style display-5">37%</p>
+                    </div>
+                </div>
+                <div class="mbr-crt-title pt-3">
+                    <h4 class="card-title py-2 mbr-fonts-style display-5">
+                        Man Power</h4>
+                    <p class="card-text py-1 mbr-fonts-style display-7">- The structure was followed and utilized&nbsp;<br>- The new policy (2019) was embeded in the proposal, concerning emplyee rewards</p>
+                </div>
+            </div>
+
+            <div class="card p-3 align-center">
+                <div class="wrap">
+                    <div class="pie_progress progress2" role="progressbar" data-goal="80">
+                        <p class="pie_progress__number number mbr-fonts-style display-5">60%</p>
+                    </div>
+                </div>
+                <div class="mbr-crt-title pt-3">
+                    <h4 class="card-title py-2 mbr-fonts-style display-5">
+                        Operating</h4>
+                    <p class="card-text py-1 mbr-fonts-style display-7">- Rent: lease agreement does not meet standards of RERA<br></p>
+                </div>
+            </div>
+
+            <div class="card p-3 align-center">
+                <div class="wrap">
+                    <div class="pie_progress progress3" role="progressbar" data-goal="35">
+                        <p class="pie_progress__number number mbr-fonts-style display-5"></p>
+                    </div>
+                </div>
+                <div class="mbr-crt-title pt-3">
+                    <h4 class="card-title py-2 mbr-fonts-style display-5">
+                        CAPEX</h4>
+                    <p class="card-text py-1 mbr-fonts-style display-7">- Proposed units do not meet the allowed structure of policy (2017)<br><br></p>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+<section class="features1 cid-roP3lfobi2" id="features03-r">
+
+
+
+  <div class="container">
+      <div class="media-container-row">
+
+          <div class="card p-3 col-12 col-md-8 col-lg-4">
+              <div class="card-img pb-4">
+                  <a href="page11.html"><span class="mbr-iconfont mbri-like"></span></a>
+              </div>
+              <div class="card-box">
+                  <h4 class="card-title py-2 mbr-fonts-style display-5">
+                      No Objection</h4>
+
+              </div>
+          </div>
+
+          <div class="card p-3 col-12 col-md-8 col-lg-4">
+              <div class="card-img pb-4">
+                  <span class="mbr-iconfont icon54-v1-dreamimg-2"></span>
+              </div>
+              <div class="card-box">
+                  <h4 class="card-title py-2 mbr-fonts-style display-5">Bring To Meeting</h4>
+
+              </div>
+          </div>
+
+          <div class="card p-3 col-12 col-md-8 col-lg-4">
+              <div class="card-img pb-4">
+                  <span class="mbr-iconfont icon54-v4-recicle-user-2"></span>
+              </div>
+              <div class="card-box">
+                  <h4 class="card-title py-2 mbr-fonts-style display-5">
+
+                      Client Review</h4>
+
+              </div>
+          </div>
+
+
+
+      </div>
+
+  </div>
+
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+<script src="assets/tether/tether.min.js"></script>
+<script src="assets/popper/popper.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/firebase-blocks-plugin/firebase-plugin.js"></script>
+<script src="https://cdn.ckeditor.com/4.7.2/standard/ckeditor.js"></script>
+<script src="assets/dropdown/js/script.min.js"></script>
+<script src="assets/as-pie-progress/jquery-as-pie-progress.min.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+<script src="assets/theme/js/script.js"></script>
+
+</body>
+</html>
